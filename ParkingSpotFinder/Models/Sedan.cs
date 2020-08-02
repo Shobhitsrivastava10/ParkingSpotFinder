@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ParkingSpotFinderApp
+﻿namespace ParkingSpotFinderApp
 {
 	public class Sedan : ICar
 	{
 		public string CarNumber { get; set; }
-		public CarType Type 
+		public CarType Type
 		{
 			get { return CarType.Sedan; }
 		}
@@ -16,7 +12,7 @@ namespace ParkingSpotFinderApp
 		{
 			get { return CarSpotType.Sedan; }
 		}
-		
-		
+
+
 	}
 }

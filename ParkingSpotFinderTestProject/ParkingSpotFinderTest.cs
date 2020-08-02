@@ -19,10 +19,12 @@ namespace ParkingSpotFinderTestProject
 		public void Setup()
 		{
 			_mockLogger = new Mock<ILogger<ParkingSpotFinder>>();
-			_spotForEachType = new Dictionary<CarSpotType, int>();
-			_spotForEachType.Add(CarSpotType.Hatchback, 10);
-			_spotForEachType.Add(CarSpotType.Sedan, 10);
-			_spotForEachType.Add(CarSpotType.MiniTruck, 10);
+			_spotForEachType = new Dictionary<CarSpotType, int>
+			{
+				{ CarSpotType.Hatchback, 10 },
+				{ CarSpotType.Sedan, 10 },
+				{ CarSpotType.MiniTruck, 10 }
+			};
 
 		}
 
@@ -35,7 +37,7 @@ namespace ParkingSpotFinderTestProject
 			var parkingDetail = _spotFinder.GetBestParkingOption(car);
 
 			Assert.IsTrue(parkingDetail.Item1);
-			Assert.AreEqual(parkingDetail.Item2.StartPosition,0);
+			Assert.AreEqual(parkingDetail.Item2.StartPosition, 0);
 			Assert.GreaterOrEqual(parkingDetail.Item2.ParkingCost, 50);
 		}
 
@@ -47,7 +49,7 @@ namespace ParkingSpotFinderTestProject
 			var car3 = new Sedan() { CarNumber = "123" };
 			var car4 = new HatchBack() { CarNumber = "124" };
 			var car5 = new HatchBack() { CarNumber = "125" };
-			
+
 			_spotFinder = new ParkingSpotFinder(_spotForEachType, _mockLogger.Object);
 
 			var parkingDetailCar1 = _spotFinder.GetBestParkingOption(car1);

@@ -2,15 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ParkingSpotFinderApp
 {
 	public class ParkingSpotFinder
 	{
-		private ParkingSpotInfo[] _totalParkingSpots;
-		private Dictionary<string, ParkingSpotInfo> _parkedCar;
-		private ILogger _logger;
+		private readonly ParkingSpotInfo[] _totalParkingSpots;
+		private readonly Dictionary<string, ParkingSpotInfo> _parkedCar;
+		private readonly ILogger _logger;
 
 		public ParkingSpotFinder(Dictionary<CarSpotType, int> spotForEachType, ILogger<ParkingSpotFinder> logger)
 		{
@@ -31,7 +30,7 @@ namespace ParkingSpotFinderApp
 				endPosition += item.Value;
 				for (int i = startPosition; i < endPosition; i++)
 				{
-					_totalParkingSpots[i] = new ParkingSpotInfo { IsAvailable = true, SpotType = item.Key, StartPosition = i, ParkingCost= GetParkingCost(item.Key) };
+					_totalParkingSpots[i] = new ParkingSpotInfo { IsAvailable = true, SpotType = item.Key, StartPosition = i, ParkingCost = GetParkingCost(item.Key) };
 				}
 				startPosition += item.Value;
 			}
@@ -181,7 +180,7 @@ namespace ParkingSpotFinderApp
 					_logger.LogError($"Car details are missing to find best possible spot");
 					return new Tuple<bool, ParkingSpotInfo>(false, null);
 				}
-				if(_totalParkingSpots == null || _totalParkingSpots.Length <= 0)
+				if (_totalParkingSpots == null || _totalParkingSpots.Length <= 0)
 				{
 					_logger.LogError($"No parking spots is present on the floor");
 					return new Tuple<bool, ParkingSpotInfo>(false, null);
@@ -207,7 +206,7 @@ namespace ParkingSpotFinderApp
 				{
 					spotFound = true;
 				}
-				
+
 
 				return new Tuple<bool, ParkingSpotInfo>(spotFound, parkingSpot);
 			}
@@ -225,7 +224,7 @@ namespace ParkingSpotFinderApp
 		/// <returns></returns>
 		private decimal GetParkingCost(CarSpotType spotType)
 		{
-			switch(spotType)
+			switch (spotType)
 			{
 				case CarSpotType.Hatchback:
 					return 50;
@@ -236,7 +235,7 @@ namespace ParkingSpotFinderApp
 				default:
 					return 75;
 
-					
+
 			}
 		}
 	}

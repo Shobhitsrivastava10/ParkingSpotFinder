@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ParkingSpotFinderApp
+﻿namespace ParkingSpotFinderApp
 {
 	public class HatchBack : ICar
 	{
 		public string CarNumber { get; set; }
-		public CarType Type 
+		public CarType Type
 		{
 			get { return CarType.Hatchback; }
 		}
@@ -16,6 +12,6 @@ namespace ParkingSpotFinderApp
 		{
 			get { return CarSpotType.Hatchback; }
 		}
-		
+
 	}
 }

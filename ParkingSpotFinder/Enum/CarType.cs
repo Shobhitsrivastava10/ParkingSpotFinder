@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ParkingSpotFinderApp
+﻿namespace ParkingSpotFinderApp
 {
 	public enum CarType : byte
-	{ 
+	{
 		Hatchback,
 		Sedan,
 		MiniTruck
